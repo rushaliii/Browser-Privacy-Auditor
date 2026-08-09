@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Privacy Auditor</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <div class="brand">
+        <span class="brand__mark">◈</span>
+        <span class="brand__name">Privacy Auditor</span>
+      </div>
+      <div class="site" id="site">—</div>
+    </header>
+
+    <section class="gauge-row">
+      <div class="gauge">
+        <svg viewBox="0 0 120 120" class="gauge__svg">
+          <circle class="gauge__track" cx="60" cy="60" r="52"></circle>
+          <circle class="gauge__fill" id="gaugeFill" cx="60" cy="60" r="52"></circle>
+        </svg>
+        <div class="gauge__center">
+          <div class="gauge__score" id="scoreValue">--</div>
+          <div class="gauge__label">/ 100</div>
+        </div>
+      </div>
+      <div class="gauge-meta">
+        <div class="band" id="bandLabel">Scanning…</div>
+        <div class="band-desc" id="bandDesc">Analyzing network activity on this page.</div>
+        <div class="breakdown" id="breakdown"></div>
+      </div>
+    </section>
+
+    <nav class="tabs" id="tabs">
+      <button class="tab is-active" data-tab="trackers">Trackers</button>
+      <button class="tab" data-tab="cookies">Cookies</button>
+      <button class="tab" data-tab="fingerprint">Fingerprint</button>
+      <button class="tab" data-tab="scripts">Scripts</button>
+    </nav>
+
+    <main class="panels" id="panels">
+      <section class="panel is-active" data-panel="trackers">
+        <div class="panel__empty" id="trackersEmpty">No known trackers detected yet.</div>
+        <ul class="list" id="trackersList"></ul>
+      </section>
+
+      <section class="panel" data-panel="cookies">
+        <div class="cookie-summary" id="cookieSummary"></div>
+        <div class="sublabel">Third-party</div>
+        <ul class="list" id="cookiesThirdParty"></ul>
+        <div class="sublabel">First-party</div>
+        <ul class="list" id="cookiesFirstParty"></ul>
+      </section>
+
+      <section class="panel" data-panel="fingerprint">
+        <div class="panel__empty" id="fpEmpty">No fingerprinting attempts detected.</div>
+        <ul class="list" id="fpList"></ul>
+      </section>
+
+      <section class="panel" data-panel="scripts">
+        <div class="panel__empty" id="scriptsEmpty">No third-party scripts detected yet.</div>
+        <ul class="list" id="scriptsList"></ul>
+      </section>
+    </main>
+
+    <footer class="app__footer">
+      <span id="footerNote">Live scan · updates as the page loads</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
